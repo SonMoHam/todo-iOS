@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Szf-hr-DFl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4BI-K5-eI3">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -8,20 +8,59 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="nuB-5n-Pef">
+            <objects>
+                <navigationController id="4BI-K5-eI3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="W6W-so-O5X">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eLd-P3-2SE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DsX-U5-tzZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-112" y="826"/>
+        </scene>
+        <!--Todo List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="todo_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oO7-G5-Zlv">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oO7-G5-Zlv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1kh-9Z-rYr"/>
+                            <constraint firstItem="oO7-G5-Zlv" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="lfp-Dc-vlq"/>
+                            <constraint firstItem="oO7-G5-Zlv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p2K-ja-EgS"/>
+                            <constraint firstItem="oO7-G5-Zlv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vsK-3z-u8B"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Todo List" id="975-xk-Sxo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YMO-Ws-5St">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="Oxs-gU-h8D" kind="show" id="bSv-pF-Dom"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="myTableView" destination="oO7-G5-Zlv" id="LzF-f7-laM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51" y="72"/>
+            <point key="canvasLocation" x="911.59420289855075" y="809.59821428571422"/>
         </scene>
         <!--Todo LIst-->
         <scene sceneID="6Gw-gx-oBm">
@@ -65,9 +104,6 @@
                     <navigationItem key="navigationItem" title="Todo LIst" id="Jyl-e0-M47">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="81d-76-JxZ">
                             <color key="tintColor" systemColor="labelColor"/>
-                            <connections>
-                                <segue destination="Oxs-gU-h8D" kind="show" id="c4v-je-bbI"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -78,6 +114,8 @@
         <!--Add Todo-->
         <scene sceneID="VxS-sK-K4W">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7C-Yr-Ccs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="RIB-lN-GH9" userLabel="Exit" sceneMemberID="exit"/>
                 <viewController id="Oxs-gU-h8D" customClass="AddTodoViewController" customModule="todo_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OXX-UU-Prk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -158,10 +196,8 @@
                         <outlet property="pickerView" destination="15Z-hQ-kCv" id="r7t-VR-nfR"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B7C-Yr-Ccs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="RIB-lN-GH9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2557.971014492754" y="71.651785714285708"/>
+            <point key="canvasLocation" x="1875" y="810"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Xt-5J-6Ts">

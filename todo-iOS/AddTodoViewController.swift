@@ -15,8 +15,6 @@ class AddTodoViewController: UIViewController {
     @IBOutlet weak var contentTextField: UITextField!
     @IBOutlet weak var deadlineLabel: UILabel!
     
-    @IBOutlet weak var deadlineTextField: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         config()

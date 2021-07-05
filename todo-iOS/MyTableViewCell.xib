@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="141" id="v3W-bm-grg" customClass="MyTableViewCell" customModule="todo_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="418" height="141"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v3W-bm-grg" id="ZQD-qg-wnu">
+                <rect key="frame" x="0.0" y="0.0" width="418" height="141"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vo2-t6-RX4">
+                        <rect key="frame" x="8" y="8" width="40.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EIO-Nj-10R">
+                        <rect key="frame" x="8" y="36.5" width="144" height="20.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기한:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaD-b0-6SZ">
+                                <rect key="frame" x="0.0" y="0.0" width="34.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy-MM-dd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1A-ZZ-EII">
+                                <rect key="frame" x="44.5" y="0.0" width="99.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fjaweio;fjsfjaweio;fjsfjaweio;fjsfjaweio;fjsfjaweio;fjsfjaweio;fjsfjaweio;fjs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDo-eN-ej3">
+                        <rect key="frame" x="8" y="65" width="396.5" height="36"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1a5-nx-JqC">
+                        <rect key="frame" x="8" y="113" width="89.5" height="20"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFY-fL-qHG">
+                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="NZi-7j-meo"/>
+                                    <constraint firstAttribute="height" constant="20" id="aEm-eF-jWy"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <state key="normal" title="Button" image="checkmark.square" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faL-NY-qdn">
+                                <rect key="frame" x="20" y="0.0" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="NFG-nQ-Iwn"/>
+                                    <constraint firstAttribute="height" constant="20" id="dKR-Fb-f6O"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button" image="xmark.square" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6Z-t2-xEa">
+                                <rect key="frame" x="40" y="0.0" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="J4v-ww-3EB"/>
+                                    <constraint firstAttribute="width" constant="20" id="r1n-mW-YoN"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="square" catalog="system"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYJ-ZL-gEm">
+                                <rect key="frame" x="60" y="0.0" width="29.5" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="1a5-nx-JqC" secondAttribute="bottom" constant="8" id="0rJ-3j-bpk"/>
+                    <constraint firstItem="mDo-eN-ej3" firstAttribute="top" secondItem="EIO-Nj-10R" secondAttribute="bottom" constant="8" id="3kK-4s-85E"/>
+                    <constraint firstItem="Vo2-t6-RX4" firstAttribute="top" secondItem="ZQD-qg-wnu" secondAttribute="top" constant="8" id="8ZA-Sa-7hD"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mDo-eN-ej3" secondAttribute="trailing" constant="8" id="GfB-or-XKW"/>
+                    <constraint firstItem="mDo-eN-ej3" firstAttribute="leading" secondItem="iaD-b0-6SZ" secondAttribute="leading" id="H4V-9K-fv7"/>
+                    <constraint firstItem="EIO-Nj-10R" firstAttribute="leading" secondItem="Vo2-t6-RX4" secondAttribute="leading" id="HOi-2B-eHi"/>
+                    <constraint firstItem="Vo2-t6-RX4" firstAttribute="leading" secondItem="ZQD-qg-wnu" secondAttribute="leading" constant="8" id="IuJ-5x-Rog"/>
+                    <constraint firstItem="EIO-Nj-10R" firstAttribute="top" secondItem="Vo2-t6-RX4" secondAttribute="bottom" constant="8" id="SYY-QI-1qJ"/>
+                    <constraint firstItem="1a5-nx-JqC" firstAttribute="leading" secondItem="mDo-eN-ej3" secondAttribute="leading" id="mjn-5M-vdr"/>
+                    <constraint firstItem="1a5-nx-JqC" firstAttribute="top" secondItem="mDo-eN-ej3" secondAttribute="bottom" constant="12" id="y5O-lt-3Oe"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="todoContentLabel" destination="mDo-eN-ej3" id="ens-y8-SYU"/>
+                <outlet property="todoDeadlineLabel" destination="d1A-ZZ-EII" id="Cje-yp-8ex"/>
+                <outlet property="todoIsClearButton" destination="BFY-fL-qHG" id="mhQ-tS-cFa"/>
+                <outlet property="todoIsClearLabel" destination="CYJ-ZL-gEm" id="iIO-DX-pDC"/>
+            </connections>
+            <point key="canvasLocation" x="195.6521739130435" y="153.01339285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <image name="xmark.square" catalog="system" width="128" height="114"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
