@@ -12,9 +12,8 @@ get post 요청 / 기능 구현
 
 # 0706
 
-![스크린샷 2021-07-06 오후 7 04 40](https://user-images.githubusercontent.com/73145656/124582678-31ab5880-de8d-11eb-8ed0-6ec87007ccfb.png)
-![스크린샷 2021-07-06 오후 7 04 22](https://user-images.githubusercontent.com/73145656/124582685-33751c00-de8d-11eb-9b04-b7fe415f6075.png)
-![스크린샷 2021-07-06 오후 7 04 07](https://user-images.githubusercontent.com/73145656/124582689-340db280-de8d-11eb-99f1-85021984e5ef.png)
+![스크린샷 2021-07-06 오후 7 13 00](https://user-images.githubusercontent.com/73145656/124583638-3e7c7c00-de8e-11eb-9b86-64e090e9c3a0.png)
+
 
 SwipeCellKit 적용,
 완료 여부와 기한에 따른 상태 표시 / 완료 미완 기한초과 기한임박(오늘까지)
