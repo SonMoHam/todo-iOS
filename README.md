@@ -27,7 +27,8 @@ put todoIsClear:id 메소드 요청 적용
 
 # 0707 기능 완성
 
-![todo-ios](https://user-images.githubusercontent.com/73145656/124736496-063e7180-df52-11eb-891f-02334b04dd32.gif)
+![todo-ios](https://user-images.githubusercontent.com/73145656/124736804-5584a200-df52-11eb-898e-2f435147711d.gif)
+
 
 이후 예정
 - 코드 리팩토링 예정
