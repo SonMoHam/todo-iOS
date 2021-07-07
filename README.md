@@ -22,3 +22,13 @@ put todoIsClear:id 메소드 요청 적용
 예정
 - 완료 여부에 따른 left swipe action 분기 처리 ex) 완료 처리, 미완 처리
 - right swipe action : 수정 , 삭제 기능 추가
+
+---
+
+# 0707 기능 완성
+
+![todo-ios](https://user-images.githubusercontent.com/73145656/124736496-063e7180-df52-11eb-891f-02334b04dd32.gif)
+
+이후 예정
+- 코드 리팩토링 예정
+- mvc 또는 mvvm 등 디자인 패턴 적용 예정
