@@ -62,60 +62,9 @@
             </objects>
             <point key="canvasLocation" x="911.59420289855075" y="809.59821428571422"/>
         </scene>
-        <!--Todo LIst-->
-        <scene sceneID="6Gw-gx-oBm">
-            <objects>
-                <tableViewController id="Zar-b2-XJI" customClass="TodoTableViewController" customModule="todo_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kc6-1R-Dic">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCell" textLabel="slp-m3-pSk" detailTextLabel="ssu-AJ-tKY" style="IBUITableViewCellStyleSubtitle" id="wJW-eq-l6J">
-                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wJW-eq-l6J" id="PM5-5j-uMj" customClass="Todo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="slp-m3-pSk">
-                                            <rect key="frame" x="20" y="10" width="33" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ssu-AJ-tKY">
-                                            <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Zar-b2-XJI" id="OmD-WL-Sj1"/>
-                            <outlet property="delegate" destination="Zar-b2-XJI" id="nJQ-Ja-NhB"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Todo LIst" id="Jyl-e0-M47">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="81d-76-JxZ">
-                            <color key="tintColor" systemColor="labelColor"/>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RlE-7v-lnJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1803" y="72"/>
-        </scene>
         <!--Add Todo-->
         <scene sceneID="VxS-sK-K4W">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B7C-Yr-Ccs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="RIB-lN-GH9" userLabel="Exit" sceneMemberID="exit"/>
                 <viewController id="Oxs-gU-h8D" customClass="AddTodoViewController" customModule="todo_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OXX-UU-Prk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -196,24 +145,10 @@
                         <outlet property="pickerView" destination="15Z-hQ-kCv" id="r7t-VR-nfR"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7C-Yr-Ccs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="RIB-lN-GH9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1875" y="810"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="0Xt-5J-6Ts">
-            <objects>
-                <navigationController id="Szf-hr-DFl" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bXX-ew-PDz">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Zar-b2-XJI" kind="relationship" relationship="rootViewController" id="8Ig-nB-Ogi"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3HS-lS-vMn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="912" y="72"/>
         </scene>
     </scenes>
     <resources>

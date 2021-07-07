@@ -15,8 +15,9 @@
 		127FA13D2691A06E00A4B86C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127FA13B2691A06E00A4B86C /* LaunchScreen.storyboard */; };
 		127FA1472691A11800A4B86C /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 127FA1462691A11800A4B86C /* SwiftyJSON */; };
 		127FA14B2691A14300A4B86C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 127FA14A2691A14300A4B86C /* Alamofire */; };
-		127FA14E2691A2E200A4B86C /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FA14D2691A2E200A4B86C /* TodoTableViewController.swift */; };
 		127FA1512691AAA000A4B86C /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127FA1502691AAA000A4B86C /* AddTodoViewController.swift */; };
+		1291AE082695913C0018C887 /* PopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1291AE072695913C0018C887 /* PopUp.storyboard */; };
+		1291AE0B269595480018C887 /* EditTodoPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1291AE0A269595480018C887 /* EditTodoPopupViewController.swift */; };
 		12A83B322692ED8900B3B458 /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12A83B312692ED8900B3B458 /* MyTableViewCell.xib */; };
 		12A83B362692F44C00B3B458 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A83B352692F44C00B3B458 /* MyTableViewCell.swift */; };
 		5BC19D4208042B05BFA94870 /* Pods_todo_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B68242AC58B2498C94553F7 /* Pods_todo_iOS.framework */; };
@@ -31,8 +32,9 @@
 		127FA1392691A06E00A4B86C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		127FA13C2691A06E00A4B86C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		127FA13E2691A06E00A4B86C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		127FA14D2691A2E200A4B86C /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		127FA1502691AAA000A4B86C /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
+		1291AE072695913C0018C887 /* PopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopUp.storyboard; sourceTree = "<group>"; };
+		1291AE0A269595480018C887 /* EditTodoPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTodoPopupViewController.swift; sourceTree = "<group>"; };
 		12A83B312692ED8900B3B458 /* MyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
 		12A83B352692F44C00B3B458 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		36A31E3F57036151858B0742 /* Pods-todo-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo-iOS.release.xcconfig"; path = "Target Support Files/Pods-todo-iOS/Pods-todo-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,7 +84,8 @@
 				127FA1362691A06E00A4B86C /* Main.storyboard */,
 				12A83B312692ED8900B3B458 /* MyTableViewCell.xib */,
 				127FA1502691AAA000A4B86C /* AddTodoViewController.swift */,
-				127FA14D2691A2E200A4B86C /* TodoTableViewController.swift */,
+				1291AE072695913C0018C887 /* PopUp.storyboard */,
+				1291AE0A269595480018C887 /* EditTodoPopupViewController.swift */,
 				127FA1392691A06E00A4B86C /* Assets.xcassets */,
 				127FA13B2691A06E00A4B86C /* LaunchScreen.storyboard */,
 				127FA13E2691A06E00A4B86C /* Info.plist */,
@@ -174,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1291AE082695913C0018C887 /* PopUp.storyboard in Resources */,
 				127FA13D2691A06E00A4B86C /* LaunchScreen.storyboard in Resources */,
 				127FA13A2691A06E00A4B86C /* Assets.xcassets in Resources */,
 				127FA1382691A06E00A4B86C /* Main.storyboard in Resources */,
@@ -232,8 +236,8 @@
 			files = (
 				127FA1352691A06E00A4B86C /* ViewController.swift in Sources */,
 				127FA1512691AAA000A4B86C /* AddTodoViewController.swift in Sources */,
-				127FA14E2691A2E200A4B86C /* TodoTableViewController.swift in Sources */,
 				127FA1312691A06E00A4B86C /* AppDelegate.swift in Sources */,
+				1291AE0B269595480018C887 /* EditTodoPopupViewController.swift in Sources */,
 				127FA1332691A06E00A4B86C /* SceneDelegate.swift in Sources */,
 				12A83B362692F44C00B3B458 /* MyTableViewCell.swift in Sources */,
 			);

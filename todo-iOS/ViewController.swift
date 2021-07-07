@@ -158,6 +158,24 @@ extension ViewController: SwipeTableViewCellDelegate {
             let editAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
                 print("editAction")
                 
+                // popupView 띄우기
+                let storyboard = UIStoryboard.init(name: "PopUp", bundle: nil)
+                let editTodoPopUpVC = storyboard.instantiateViewController(withIdentifier: "EditTodoPopUpVC") as! EditTodoPopupViewController
+       
+                // 보여지는 스타일
+                editTodoPopUpVC.modalPresentationStyle = .overCurrentContext
+                // 사라지는 스타일
+                editTodoPopUpVC.modalTransitionStyle = .crossDissolve
+                
+                editTodoPopUpVC.editCompletionClosure = {
+                    print("editCompletion 블럭 호출")
+                    self.getTodos()
+                }
+                
+                self.present(editTodoPopUpVC, animated: true) {
+                    editTodoPopUpVC.todoData = dataItem
+                }
+                
 //                let bottomAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 //                bottomAlertController.addAction(UIAlertAction(title: "댓글", style: .default, handler: closure))
 //                bottomAlertController.addAction(UIAlertAction(title: "닫기", style: .default, handler: closure))
