@@ -121,18 +121,13 @@ extension ViewController: SwipeTableViewCellDelegate {
                             deadline: (todo["deadline"].stringValue).components(separatedBy: "T")[0],
                             isClear: todo["isClear"].boolValue)
         
-        let cell = tableView.cellForRow(at: indexPath) as! MyTableViewCell
+        // let cell = tableView.cellForRow(at: indexPath) as! MyTableViewCell
         
         switch orientation {
         case .left:
             let isClearAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
                 print("isclear 액션")
-                // 데이터 변경 처리
-//                let parameters = [
-//                    "content": content,
-//                    "deadline": deadline
-//                ]
-                
+
                 AF.request("http://3.37.62.54:3000/todoIsClear/\(dataItem.id)", method: .put).responseJSON { (response) in
                     print(response)
                     self.getTodos()
@@ -145,15 +140,47 @@ extension ViewController: SwipeTableViewCellDelegate {
                 // put todo
             }
             
-            isClearAction.title = "완료"
-            isClearAction.image = UIImage(systemName: "checkmark")
-            isClearAction.backgroundColor = .systemGreen
+            isClearAction.title = dataItem.isClear ? "완료 해제" : "완료 처리"
+            isClearAction.image = dataItem.isClear ? UIImage(systemName: "xmark") : UIImage(systemName: "checkmark")
+            isClearAction.backgroundColor = dataItem.isClear ? .systemRed : .systemGreen
             return [isClearAction]
         case .right:
-            let isClearAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
-                print("isclear 액션")
+
+//            let closure: (UIAlertAction) -> Void = { (action: UIAlertAction) in
+//                cell.hideSwipe(animated: true)
+//                if let selectedTitle = action.title {
+//                    print("selectedTItle: \(selectedTitle)")
+//                    let alertController = UIAlertController(title: selectedTitle, message: "클릭됨", preferredStyle: .alert)
+//                    alertController.addAction(UIAlertAction(title: "a닫기", style: .cancel, handler: nil))
+//                    self.present(alertController, animated: true, completion: nil)
+//                }
+//            }
+            let editAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
+                print("editAction")
+                
+//                let bottomAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//                bottomAlertController.addAction(UIAlertAction(title: "댓글", style: .default, handler: closure))
+//                bottomAlertController.addAction(UIAlertAction(title: "닫기", style: .default, handler: closure))
+//                self.present(bottomAlertController, animated: true, completion: nil)
             }
-            return [isClearAction]
+            editAction.title = "수정하기"
+            editAction.image = UIImage(systemName: "pencil.and.ellipsis.rectangle")  // ellipsis.circle
+            editAction.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            
+            let deleteAction = SwipeAction(style: .destructive, title: nil) { (action, indexPath) in
+                print("delete action")
+                // delete method
+
+                self.todos.remove(at: indexPath.row)
+                AF.request("http://3.37.62.54:3000/todo/\(dataItem.id)", method: .delete).responseJSON { (response) in
+                    print(response)
+                }
+
+            }
+            deleteAction.title = "지우기"
+            deleteAction.image = UIImage(systemName: "trash.fill")
+            deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            return [deleteAction, editAction]
         }
         
     }
@@ -161,7 +188,7 @@ extension ViewController: SwipeTableViewCellDelegate {
     // 셀 액션 옵션
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
         var options = SwipeOptions()
-        options.expansionStyle = .selection
+        options.expansionStyle = orientation == .left ? .selection : .destructive
         options.transitionStyle = .drag
         return options
     }
