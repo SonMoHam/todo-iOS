@@ -48,12 +48,18 @@ class ViewController: UIViewController{
         super.viewWillAppear(animated)
         // getTodos()
         
-        TodoAlamofireManager.shared.getTodos(completion: { [weak self] result in
+        TodoAlamofireManager.shared.getTodos { [weak self] result in
             guard let self = self else { return }
             print(result)
             self.todos = result
             self.configTableView()
-        })
+        }
+        //        TodoAlamofireManager.shared.getTodos(completion: { [weak self] result in
+        //            guard let self = self else { return }
+        //            print(result)
+        //            self.todos = result
+        //            self.configTableView()
+        //        })
         
     }
     
@@ -137,7 +143,7 @@ extension ViewController: SwipeTableViewCellDelegate {
             let isClearAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
                 print("isclear 액션")
                 
-//                AF.request("http://3.37.62.54:3000/todoIsClear/\(dataItem.id)", method: .put).responseJSON { (response) in
+                //                AF.request("http://3.37.62.54:3000/todoIsClear/\(dataItem.id)", method: .put).responseJSON { (response) in
                 TodoAlamofireManager.shared.putTodoIsClear(targetId: dataItem.id) {
                     TodoAlamofireManager.shared.getTodos { [weak self] result in
                         guard let self = self else { return }
@@ -148,7 +154,7 @@ extension ViewController: SwipeTableViewCellDelegate {
                         }
                     }
                 }
- 
+                
                 
                 //                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                 //                    // 스와이프 액션 셀만 리로드
