@@ -33,3 +33,10 @@ put todoIsClear:id 메소드 요청 적용
 이후 예정
 - 코드 리팩토링 예정
 - mvc 또는 mvvm 등 디자인 패턴 적용 예정
+
+---
+
+# 0711
+
+
+TodoAlamofireManager, TodoRouter 추가
