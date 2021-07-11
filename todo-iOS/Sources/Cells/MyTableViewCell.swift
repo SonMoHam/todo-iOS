@@ -18,7 +18,7 @@ class MyTableViewCell: SwipeTableViewCell {
     // checkmark.square
     // xmark.square
     // square
-    
+
     var todoData: Todo? {
         didSet{
             if let data = todoData {

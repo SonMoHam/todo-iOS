@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 
 final class TodoAlamofireManager {
-    fileprivate let baseURL = "http://3.37.62.54:3000/"
+//    fileprivate let baseURL = "http://3.37.62.54:3000/"
     static let shared = TodoAlamofireManager()
     
 //    func requestTest(completion:@escaping ([JSON]) -> Void ) {

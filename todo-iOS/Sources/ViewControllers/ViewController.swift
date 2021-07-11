@@ -10,20 +10,20 @@ import Alamofire
 import SwiftyJSON
 import SwipeCellKit
 
-class Todo {
-    let id: Int
-    let content: String
-    let deadline: String
-    var isClear: Bool = false
-    
-    init(id: Int, content: String, deadline: String, isClear: Bool) {
-        self.id = id
-        self.content = content
-        self.deadline = deadline
-        self.isClear = isClear
-    }
-    
-}
+//class Todo {
+//    let id: Int
+//    let content: String
+//    let deadline: String
+//    var isClear: Bool = false
+//    
+//    init(id: Int, content: String, deadline: String, isClear: Bool) {
+//        self.id = id
+//        self.content = content
+//        self.deadline = deadline
+//        self.isClear = isClear
+//    }
+//    
+//}
 
 class ViewController: UIViewController{
     var todos: [JSON] = []
