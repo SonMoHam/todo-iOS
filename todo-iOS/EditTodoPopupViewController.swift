@@ -62,16 +62,15 @@ class EditTodoPopupViewController: UIViewController {
             ]
         }
         
-        
-        AF.request("http://3.37.62.54:3000/todo", method: .put, parameters: parameters).responseJSON { (response) in
-            print(response)
-            
-            // 컴플리션 블럭 호출
+        TodoAlamofireManager.shared.putTodo(parameters: parameters) { [weak self]  in
+            guard let self = self else { return }
             if let editCompletionClouser = self.editCompletionClosure {
                 editCompletionClouser()
             }
             self.dismiss(animated: true, completion: nil)
         }
+        
+
     }
     @IBAction func deadlineDatePickerValueChanged(_ sender: Any) {
         let dateformatter = DateFormatter()

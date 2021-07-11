@@ -46,24 +46,33 @@ class ViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getTodos()
-
+        // getTodos()
+        
+        TodoAlamofireManager.shared.getTodos(completion: { [weak self] result in
+            guard let self = self else { return }
+            print(result)
+            self.todos = result
+            self.configTableView()
+        })
+        
     }
     
-    fileprivate func getTodos() {
-        AF.request("http://3.37.62.54:3000/todo").responseJSON { (response) in
-            if let value = response.value {
-                let json = JSON(value)
-                self.todos = json["data"].arrayValue
-                
-                // table view 새로고침
-                self.configTableView()
-                
-            }
-        }
-    }
-
-
+    //    fileprivate func getTodos() {
+    //        AF.request("http://3.37.62.54:3000/todo").responseJSON { (response) in
+    //            if let value = response.value {
+    //                let json = JSON(value)
+    //                self.todos = json["data"].arrayValue
+    //
+    //                // table view 새로고침
+    //                self.configTableView()
+    //
+    //            }
+    //        }
+    //    }
+    
+    
+    
+    
     
     fileprivate func configTableView() {
         let myTableViewCellNib = UINib(nibName: String(describing: MyTableViewCell.self), bundle: nil)
@@ -127,16 +136,24 @@ extension ViewController: SwipeTableViewCellDelegate {
         case .left:
             let isClearAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
                 print("isclear 액션")
-
-                AF.request("http://3.37.62.54:3000/todoIsClear/\(dataItem.id)", method: .put).responseJSON { (response) in
-                    print(response)
-                    self.getTodos()
+                
+//                AF.request("http://3.37.62.54:3000/todoIsClear/\(dataItem.id)", method: .put).responseJSON { (response) in
+                TodoAlamofireManager.shared.putTodoIsClear(targetId: dataItem.id) {
+                    TodoAlamofireManager.shared.getTodos { [weak self] result in
+                        guard let self = self else { return }
+                        print(result)
+                        self.todos = result
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                            tableView.reloadRows(at: [indexPath], with: .none)
+                        }
+                    }
                 }
-
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-//                    // 스와이프 액션 셀만 리로드
-//                    tableView.reloadRows(at: [indexPath], with: .none)
-//                }
+ 
+                
+                //                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                //                    // 스와이프 액션 셀만 리로드
+                //                    tableView.reloadRows(at: [indexPath], with: .none)
+                //                }
                 // put todo
             }
             
@@ -145,23 +162,23 @@ extension ViewController: SwipeTableViewCellDelegate {
             isClearAction.backgroundColor = dataItem.isClear ? .systemRed : .systemGreen
             return [isClearAction]
         case .right:
-
-//            let closure: (UIAlertAction) -> Void = { (action: UIAlertAction) in
-//                cell.hideSwipe(animated: true)
-//                if let selectedTitle = action.title {
-//                    print("selectedTItle: \(selectedTitle)")
-//                    let alertController = UIAlertController(title: selectedTitle, message: "클릭됨", preferredStyle: .alert)
-//                    alertController.addAction(UIAlertAction(title: "a닫기", style: .cancel, handler: nil))
-//                    self.present(alertController, animated: true, completion: nil)
-//                }
-//            }
+            
+            //            let closure: (UIAlertAction) -> Void = { (action: UIAlertAction) in
+            //                cell.hideSwipe(animated: true)
+            //                if let selectedTitle = action.title {
+            //                    print("selectedTItle: \(selectedTitle)")
+            //                    let alertController = UIAlertController(title: selectedTitle, message: "클릭됨", preferredStyle: .alert)
+            //                    alertController.addAction(UIAlertAction(title: "a닫기", style: .cancel, handler: nil))
+            //                    self.present(alertController, animated: true, completion: nil)
+            //                }
+            //            }
             let editAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
                 print("editAction")
                 
                 // popupView 띄우기
                 let storyboard = UIStoryboard.init(name: "PopUp", bundle: nil)
                 let editTodoPopUpVC = storyboard.instantiateViewController(withIdentifier: "EditTodoPopUpVC") as! EditTodoPopupViewController
-       
+                
                 // 보여지는 스타일
                 editTodoPopUpVC.modalPresentationStyle = .overCurrentContext
                 // 사라지는 스타일
@@ -169,17 +186,24 @@ extension ViewController: SwipeTableViewCellDelegate {
                 
                 editTodoPopUpVC.editCompletionClosure = {
                     print("editCompletion 블럭 호출")
-                    self.getTodos()
+                    TodoAlamofireManager.shared.getTodos(completion: { [weak self] result in
+                        guard let self = self else { return }
+                        print(result)
+                        self.todos = result
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            tableView.reloadRows(at: [indexPath], with: .none)
+                        }
+                    })
                 }
                 
                 self.present(editTodoPopUpVC, animated: true) {
                     editTodoPopUpVC.todoData = dataItem
                 }
                 
-//                let bottomAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//                bottomAlertController.addAction(UIAlertAction(title: "댓글", style: .default, handler: closure))
-//                bottomAlertController.addAction(UIAlertAction(title: "닫기", style: .default, handler: closure))
-//                self.present(bottomAlertController, animated: true, completion: nil)
+                //                let bottomAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                //                bottomAlertController.addAction(UIAlertAction(title: "댓글", style: .default, handler: closure))
+                //                bottomAlertController.addAction(UIAlertAction(title: "닫기", style: .default, handler: closure))
+                //                self.present(bottomAlertController, animated: true, completion: nil)
             }
             editAction.title = "수정하기"
             editAction.image = UIImage(systemName: "pencil.and.ellipsis.rectangle")  // ellipsis.circle
@@ -188,12 +212,10 @@ extension ViewController: SwipeTableViewCellDelegate {
             let deleteAction = SwipeAction(style: .destructive, title: nil) { (action, indexPath) in
                 print("delete action")
                 // delete method
-
+                
                 self.todos.remove(at: indexPath.row)
-                AF.request("http://3.37.62.54:3000/todo/\(dataItem.id)", method: .delete).responseJSON { (response) in
-                    print(response)
-                }
-
+                TodoAlamofireManager.shared.deleteTodo(targetId: dataItem.id)
+                
             }
             deleteAction.title = "지우기"
             deleteAction.image = UIImage(systemName: "trash.fill")

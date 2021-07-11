@@ -35,11 +35,14 @@ class AddTodoViewController: UIViewController {
             "content": content,
             "deadline": deadline
         ]
-        
-        AF.request("http://3.37.62.54:3000/todo", method: .post, parameters: parameters).responseJSON { (response) in
-            print(response)
+        TodoAlamofireManager.shared.postTodo(parameters: parameters) { [weak self] in
+            guard let self = self else { return }
             self.navigationController?.popViewController(animated: true)
         }
+//
+//        AF.request("http://3.37.62.54:3000/todo", method: .post, parameters: parameters).responseJSON { (response) in
+//            self.navigationController?.popViewController(animated: true)
+//        }
     }
     
     fileprivate func config() {
