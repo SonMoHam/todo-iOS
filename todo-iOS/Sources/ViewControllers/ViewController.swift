@@ -6,47 +6,21 @@
 //
 
 import UIKit
-import Alamofire
 import SwiftyJSON
 import SwipeCellKit
-
-//class Todo {
-//    let id: Int
-//    let content: String
-//    let deadline: String
-//    var isClear: Bool = false
-//    
-//    init(id: Int, content: String, deadline: String, isClear: Bool) {
-//        self.id = id
-//        self.content = content
-//        self.deadline = deadline
-//        self.isClear = isClear
-//    }
-//    
-//}
 
 class ViewController: UIViewController{
     var todos: [JSON] = []
     
-    
     @IBOutlet weak var myTableView: UITableView!
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        //        AF.request("http://3.37.62.54:3000/todo", method: .post, parameters: parameters).responseJSON { (response) in
-        //            print(response)
-        //        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // getTodos()
         
         TodoAlamofireManager.shared.getTodos { [weak self] result in
             guard let self = self else { return }
@@ -54,31 +28,7 @@ class ViewController: UIViewController{
             self.todos = result
             self.configTableView()
         }
-        //        TodoAlamofireManager.shared.getTodos(completion: { [weak self] result in
-        //            guard let self = self else { return }
-        //            print(result)
-        //            self.todos = result
-        //            self.configTableView()
-        //        })
-        
     }
-    
-    //    fileprivate func getTodos() {
-    //        AF.request("http://3.37.62.54:3000/todo").responseJSON { (response) in
-    //            if let value = response.value {
-    //                let json = JSON(value)
-    //                self.todos = json["data"].arrayValue
-    //
-    //                // table view 새로고침
-    //                self.configTableView()
-    //
-    //            }
-    //        }
-    //    }
-    
-    
-    
-    
     
     fileprivate func configTableView() {
         let myTableViewCellNib = UINib(nibName: String(describing: MyTableViewCell.self), bundle: nil)
@@ -91,12 +41,10 @@ class ViewController: UIViewController{
         self.myTableView.delegate = self
         self.myTableView.dataSource = self
         self.myTableView.reloadData()
-        
     }
-    
-    
 }
 
+// MARK: - extensions
 extension ViewController: UITableViewDelegate {
     
 }
@@ -104,7 +52,6 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return self.todos.count
     }
     
@@ -136,14 +83,12 @@ extension ViewController: SwipeTableViewCellDelegate {
                             deadline: (todo["deadline"].stringValue).components(separatedBy: "T")[0],
                             isClear: todo["isClear"].boolValue)
         
-        // let cell = tableView.cellForRow(at: indexPath) as! MyTableViewCell
         
         switch orientation {
         case .left:
             let isClearAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
                 print("isclear 액션")
                 
-                //                AF.request("http://3.37.62.54:3000/todoIsClear/\(dataItem.id)", method: .put).responseJSON { (response) in
                 TodoAlamofireManager.shared.putTodoIsClear(targetId: dataItem.id) {
                     TodoAlamofireManager.shared.getTodos { [weak self] result in
                         guard let self = self else { return }
@@ -154,30 +99,14 @@ extension ViewController: SwipeTableViewCellDelegate {
                         }
                     }
                 }
-                
-                
-                //                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                //                    // 스와이프 액션 셀만 리로드
-                //                    tableView.reloadRows(at: [indexPath], with: .none)
-                //                }
-                // put todo
             }
             
             isClearAction.title = dataItem.isClear ? "완료 해제" : "완료 처리"
             isClearAction.image = dataItem.isClear ? UIImage(systemName: "xmark") : UIImage(systemName: "checkmark")
             isClearAction.backgroundColor = dataItem.isClear ? .systemRed : .systemGreen
             return [isClearAction]
-        case .right:
             
-            //            let closure: (UIAlertAction) -> Void = { (action: UIAlertAction) in
-            //                cell.hideSwipe(animated: true)
-            //                if let selectedTitle = action.title {
-            //                    print("selectedTItle: \(selectedTitle)")
-            //                    let alertController = UIAlertController(title: selectedTitle, message: "클릭됨", preferredStyle: .alert)
-            //                    alertController.addAction(UIAlertAction(title: "a닫기", style: .cancel, handler: nil))
-            //                    self.present(alertController, animated: true, completion: nil)
-            //                }
-            //            }
+        case .right:
             let editAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
                 print("editAction")
                 
@@ -201,15 +130,10 @@ extension ViewController: SwipeTableViewCellDelegate {
                         }
                     })
                 }
-                
+    
                 self.present(editTodoPopUpVC, animated: true) {
                     editTodoPopUpVC.todoData = dataItem
                 }
-                
-                //                let bottomAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-                //                bottomAlertController.addAction(UIAlertAction(title: "댓글", style: .default, handler: closure))
-                //                bottomAlertController.addAction(UIAlertAction(title: "닫기", style: .default, handler: closure))
-                //                self.present(bottomAlertController, animated: true, completion: nil)
             }
             editAction.title = "수정하기"
             editAction.image = UIImage(systemName: "pencil.and.ellipsis.rectangle")  // ellipsis.circle
