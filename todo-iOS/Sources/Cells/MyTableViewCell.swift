@@ -15,10 +15,7 @@ class MyTableViewCell: SwipeTableViewCell {
     @IBOutlet weak var todoContentLabel: UILabel!
     @IBOutlet weak var todoIsClearButton: UIButton!
     @IBOutlet weak var todoIsClearLabel: UILabel!
-    // checkmark.square
-    // xmark.square
-    // square
-
+    
     var todoData: Todo? {
         didSet{
             if let data = todoData {
@@ -26,10 +23,7 @@ class MyTableViewCell: SwipeTableViewCell {
                 todoContentLabel.text = data.content
                 todoDeadlineLabel.text = data.deadline
                 if data.isClear {
-                    todoIsClearButton.tintColor = .systemGreen
-                    todoIsClearButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-                    todoIsClearLabel.text = "완료"
-
+                    configIsClearUI(buttonColor: .systemGreen, buttonImageName: "checkmark.square", labelText: "완료")
                 } else {
                     let format = DateFormatter()
                     format.dateFormat = "yyyy-MM-dd"
@@ -38,28 +32,27 @@ class MyTableViewCell: SwipeTableViewCell {
                     switch deadline.compare(today) {
                     // deadline < Date()
                     case .orderedAscending:
-                        todoIsClearButton.tintColor = .systemRed
-                        todoIsClearButton.setImage(UIImage(systemName: "xmark.square"), for: .normal)
-                        todoIsClearLabel.text = "기한 초과"
+                        configIsClearUI(buttonColor: .systemRed, buttonImageName: "xmark.square", labelText: "기한 초과")
+                        
                     // deadline > Date()
                     case .orderedDescending:
-                        todoIsClearButton.tintColor = .systemGray
-                        todoIsClearButton.setImage(UIImage(systemName: "square"), for: .normal)
-                        todoIsClearLabel.text = "미완"
+                        configIsClearUI(buttonColor: .systemGray, buttonImageName: "square", labelText: "미완")
+                        
                     // deadline == Date()
                     case .orderedSame:
-                        todoIsClearButton.tintColor = .systemYellow
-                        todoIsClearButton.setImage(UIImage(systemName: "square"), for: .normal)
-                        todoIsClearLabel.text = "오늘까지"
+                        configIsClearUI(buttonColor: .systemYellow, buttonImageName: "square", labelText: "오늘까지")
                     }
-
-
-  
                 }
-                
             }
         }
     }
+    
+    fileprivate func configIsClearUI(buttonColor: UIColor, buttonImageName: String, labelText: String ) {
+        self.todoIsClearButton.tintColor = buttonColor
+        self.todoIsClearButton.setImage(UIImage(systemName: buttonImageName), for: .normal)
+        self.todoIsClearLabel.text = labelText
+    }
+    
     override class func awakeFromNib() {
         super.awakeFromNib()
         
