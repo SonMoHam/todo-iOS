@@ -1,4 +1,5 @@
 # todo-iOS
+- 오토레이아웃, alamofire 통신 & JSON 파싱, swipeCellKit, custom tableViewCell 등등..
 
 # 0703 - 0705
 
